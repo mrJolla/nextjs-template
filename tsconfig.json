@@ -1,12 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "~src/*": ["./src/*"],
-      "~mocks/*": ["./mocks/*"]
-    },
+    "baseUrl": "./src",
     "allowSyntheticDefaultImports": true,
-    "target": "es5",
+    "target": "es2015",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -21,6 +17,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "additional.d.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.js"],
   "exclude": ["node_modules"]
 }

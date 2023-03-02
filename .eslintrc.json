@@ -1,20 +1,122 @@
 {
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": [
+      "./tsconfig.json"
+    ]
+  },
   "plugins": [
     "@typescript-eslint",
-    "simple-import-sort",
+    "effector",
     "unused-imports",
     "dirs",
-    "unicorn"
+    "sort-keys-fix",
+    "typescript-sort-keys",
+    "simple-import-sort",
+    "unicorn",
+    "tailwindcss"
   ],
   "extends": [
-    "next/core-web-vitals",
+    "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:@tanstack/eslint-plugin-query/recommended",
+    "plugin:effector/react",
+    "plugin:effector/scope",
+    "plugin:effector/future",
+    "plugin:effector/recommended",
     "plugin:import/recommended",
     "plugin:prettier/recommended",
-    "plugin:unicorn/recommended"
+    "plugin:unicorn/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier",
+    "plugin:tailwindcss/recommended",
+    "next/core-web-vitals"
   ],
   "rules": {
-    // Eslint common
+    // react
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "callbacksLast": true,
+        "ignoreCase": true,
+        "shorthandFirst": true,
+        "reservedFirst": true,
+        "multiline": "last"
+      }
+    ],
+    "react/jsx-curly-brace-presence": [
+      "error",
+      "never"
+    ],
+    "react/display-name": "off",
+    "react/jsx-boolean-value": [
+      "error",
+      "never"
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".tsx",
+          ".jsx"
+        ]
+      }
+    ],
+    // eslint
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "effector-react",
+            "message": "Please import from 'effector-react/scope' instead."
+          },
+          {
+            "name": "effector-react/ssr",
+            "message": "Please import from 'effector-react/scope' instead."
+          }
+        ]
+      }
+    ],
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      },
+      {
+        "blankLine": "always",
+        "prev": [
+          "const",
+          "let"
+        ],
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": [
+          "const",
+          "let"
+        ],
+        "next": [
+          "const",
+          "let"
+        ]
+      }
+    ],
+    "arrow-body-style": [
+      "error",
+      "as-needed"
+    ],
+    "no-unused-vars": "off",
     "no-console": "error",
     "no-multi-spaces": "error",
     "no-multiple-empty-lines": [
@@ -30,71 +132,117 @@
         "SwitchCase": 1
       }
     ],
-    "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
-    // Unused imports
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    // import
+    "import/no-unresolved": "off",
+    // sort-keys-fix
+    "sort-keys-fix/sort-keys-fix": "error",
+    // unused-imports
     "unused-imports/no-unused-imports": "error",
-    // Simple import sort
-    "simple-import-sort/imports": [
+    // unicorn
+    "unicorn/filename-case": [
       "error",
       {
-        "groups": [
-          ["^(react)(\\/.*|$)", "^next"],
-          ["^@?\\w"],
-          ["^~(src)(/.*|$)"],
-          ["^~(mocks)(/.*|$)"],
-          ["^\\."],
-          ["(gif|jpe?g|tiff?|png|webp|bmp)$"],
-          ["(css)$"]
-        ]
+        "case": "kebabCase"
       }
     ],
-    "simple-import-sort/exports": "error",
-    // Unicorn
+    "unicorn/consistent-function-scoping": "off",
     "unicorn/prevent-abbreviations": "off",
     "unicorn/no-null": "off",
     "unicorn/explicit-length-check": "off",
     "unicorn/no-array-callback-reference": "off",
     "unicorn/no-array-reduce": "off",
     "unicorn/prefer-module": "off",
-    // Dirs
+    "unicorn/prefer-node-protocol": "off",
+    // dirs
     "dirs/dirnames": [
       2,
       {
-        "pattern": "^[a-z-]+$"
+        "pattern": "^[\\[\\]a-z-]+$"
       }
     ],
-    // React
-    "react/react-in-jsx-scope": "off",
-    "react/no-unknown-property": "error",
-    "react/jsx-sort-props": [
+    // typescript
+    "typescript-sort-keys/interface": [
       "error",
+      "asc",
       {
-        "callbacksLast": true,
-        "ignoreCase": true,
-        "shorthandFirst": true,
-        "reservedFirst": true
+        "caseSensitive": true,
+        "natural": false,
+        "requiredFirst": true
       }
     ],
-    "react/jsx-curly-brace-presence": ["error", "never"],
-    "react/jsx-curly-spacing": [
+    "typescript-sort-keys/string-enum": [
       "error",
+      "asc",
       {
-        "when": "never",
-        "children": true
+        "caseSensitive": true
       }
     ],
-    "react/jsx-boolean-value": ["error", "always"],
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".jsx", ".tsx"]
-      }
-    ],
-    // TypeScript
     "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
+    // jsx-a11y
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": [
+          "Link"
+        ],
+        "specialLink": [
+          "hrefLeft",
+          "hrefRight"
+        ],
+        "aspects": [
+          "invalidHref",
+          "preferButton"
+        ]
+      }
+    ],
+    // simple-import-sort
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          [
+            "^(react)(\\/.*|$)",
+            "^next"
+          ],
+          [
+            "^@?\\w"
+          ],
+          [
+            "^(layouts)(/.*|$)",
+            "^(containers)(/.*|$)",
+            "^(components)(/.*|$)",
+            "^(ui)(/.*|$)"
+          ],
+          [
+            "^(api)(/.*|$)",
+            "^(hooks)(/.*|$)",
+            "^(store)(/.*|$)",
+            "^(helpers)(/.*|$)",
+            "^(types)(/.*|$)",
+            "^(constants)(/.*|$)",
+            "^(mocks)(/.*|$)"
+          ],
+          [
+            "^\\."
+          ],
+          [
+            "(jpe?g|png|webp|svg|avif)$"
+          ],
+          [
+            "(css)$"
+          ]
+        ]
+      }
+    ],
+    "simple-import-sort/exports": "error"
   }
 }

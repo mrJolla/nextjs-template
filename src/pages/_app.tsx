@@ -9,7 +9,7 @@ import { fork, Scope, serialize } from 'effector';
 import { Provider } from 'effector-react/scope';
 import NProgress from 'nprogress';
 
-import '../styles/globals.css';
+import '../../public/styles/app.css';
 
 let clientScope: Scope;
 

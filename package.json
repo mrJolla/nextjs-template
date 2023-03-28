@@ -16,7 +16,7 @@
     "test:stylelint:fix": "yarn test:stylelint --fix",
     "test:prettier": "prettier --write './src/**/*.{ts,tsx,json,md}'",
     "test:commit": "commitlint -e",
-    "generate-sprite": "yarn sprite --group --root 'public/svg-sprite-assets' -o 'public/imgs/svg-sprites' -d 'src/types/icon.ts'"
+    "generate-sprite": "yarn sprite --group --root 'public/imgs/svg-sprite-assets' -o 'public/imgs/svg-sprites' -d '~/shared/types/icon.ts'"
   },
   "browserslist": {
     "production": [

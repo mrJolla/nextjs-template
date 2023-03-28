@@ -1,0 +1,30 @@
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#__next {
+  @apply flex flex-1 flex-col overflow-x-hidden;
+}
+
+/* Grid */
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  img[loading="lazy"] {
+    clip-path: inset(0.6px)
+  }
+}
+
+/* Input autocomplete */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  box-shadow: 0 0 0 1000px #16171D inset;
+  transition: background-color 5000s ease-in-out 0s;
+
+  -webkit-text-fill-color: white;
+}

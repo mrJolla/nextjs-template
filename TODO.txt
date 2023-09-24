@@ -1,0 +1,8 @@
+TODO:
+
+- Поправить генерация SvgSprite
+- Изучить next.config.js
+
+- Переезд на FSD:
+-- навести порядок в shared
+-- навести порядок в widgets, entities и features

@@ -3,12 +3,11 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 module.exports = withBundleAnalyzer({
-  distDir: 'build',
-  compress: false,
-  experimental: {
-    isrMemoryCacheSize: 0,
-  },
   images: {
+    deviceSizes: [475, 640, 920, 1240],
+    domains: ['images.unsplash.com', 'robohash.org'],
     formats: ['image/avif', 'image/webp'],
+    imageSizes: [150, 300],
   },
+  reactStrictMode: true,
 });

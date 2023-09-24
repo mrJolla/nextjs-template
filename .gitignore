@@ -5,6 +5,8 @@ node_modules
 .pnp
 .pnp.js
 
+analyze
+
 # testing
 coverage
 
@@ -38,5 +40,4 @@ yarn-error.log*
 .idea
 .vscode
 
-# Sentry
-.sentryclirc
+.env

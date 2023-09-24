@@ -7,9 +7,7 @@
     },
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": [
-      "./tsconfig.json"
-    ]
+    "project": ["./tsconfig.json"]
   },
   "plugins": [
     "@typescript-eslint",
@@ -19,8 +17,7 @@
     "sort-keys-fix",
     "typescript-sort-keys",
     "simple-import-sort",
-    "unicorn",
-    "tailwindcss"
+    "unicorn"
   ],
   "extends": [
     "eslint:recommended",
@@ -31,11 +28,8 @@
     "plugin:effector/future",
     "plugin:effector/recommended",
     "plugin:import/recommended",
-    "plugin:prettier/recommended",
     "plugin:unicorn/recommended",
     "plugin:jsx-a11y/recommended",
-    "prettier",
-    "plugin:tailwindcss/recommended",
     "next/core-web-vitals"
   ],
   "rules": {
@@ -51,22 +45,13 @@
         "multiline": "last"
       }
     ],
-    "react/jsx-curly-brace-presence": [
-      "error",
-      "never"
-    ],
+    "react/jsx-curly-brace-presence": ["error", "never"],
     "react/display-name": "off",
-    "react/jsx-boolean-value": [
-      "error",
-      "never"
-    ],
+    "react/jsx-boolean-value": ["error", "never"],
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".tsx",
-          ".jsx"
-        ]
+        "extensions": [".tsx", ".jsx"]
       }
     ],
     // eslint
@@ -94,28 +79,16 @@
       },
       {
         "blankLine": "always",
-        "prev": [
-          "const",
-          "let"
-        ],
+        "prev": ["const", "let"],
         "next": "*"
       },
       {
         "blankLine": "any",
-        "prev": [
-          "const",
-          "let"
-        ],
-        "next": [
-          "const",
-          "let"
-        ]
+        "prev": ["const", "let"],
+        "next": ["const", "let"]
       }
     ],
-    "arrow-body-style": [
-      "error",
-      "as-needed"
-    ],
+    "arrow-body-style": ["error", "as-needed"],
     "no-unused-vars": "off",
     "no-console": "error",
     "no-multi-spaces": "error",
@@ -132,14 +105,8 @@
         "SwitchCase": 1
       }
     ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
     // import
     "import/no-unresolved": "off",
     // sort-keys-fix
@@ -155,6 +122,7 @@
     ],
     "unicorn/consistent-function-scoping": "off",
     "unicorn/prevent-abbreviations": "off",
+    "unicorn/no-document-cookie": "off",
     "unicorn/no-null": "off",
     "unicorn/explicit-length-check": "off",
     "unicorn/no-array-callback-reference": "off",
@@ -191,17 +159,9 @@
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
-        "components": [
-          "Link"
-        ],
-        "specialLink": [
-          "hrefLeft",
-          "hrefRight"
-        ],
-        "aspects": [
-          "invalidHref",
-          "preferButton"
-        ]
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
       }
     ],
     // simple-import-sort
@@ -209,37 +169,18 @@
       "error",
       {
         "groups": [
+          ["^(react)(\\/.*|$)", "^(react-dom)(\\/.*|$)", "(^next)(\\/.*|$)"],
+          ["^@?\\w"],
           [
-            "^(react)(\\/.*|$)",
-            "^next"
+            "^(~/widgets)(\\/.*|$)",
+            "^(~/entities)(\\/.*|$)",
+            "^(~/features)(\\/.*|$)",
+            "^(~/shared)(\\/.*|$)"
           ],
-          [
-            "^@?\\w"
-          ],
-          [
-            "^(~/layouts)(/.*|$)",
-            "^(~/containers)(/.*|$)",
-            "^(~/components)(/.*|$)",
-            "^(~/ui)(/.*|$)"
-          ],
-          [
-            "^(~/api)(/.*|$)",
-            "^(~/hooks)(/.*|$)",
-            "^(~/store)(/.*|$)",
-            "^(~/helpers)(/.*|$)",
-            "^(~/types)(/.*|$)",
-            "^(~/constants)(/.*|$)",
-            "^(~/mocks)(/.*|$)"
-          ],
-          [
-            "^\\."
-          ],
-          [
-            "(jpe?g|png|webp|svg|avif)$"
-          ],
-          [
-            "(css)$"
-          ]
+          ["^(~/mocks)(\\/.*|$)"],
+          ["^\\."],
+          ["(jpe?g|png|webp|svg|avif)$"],
+          ["(css)$"]
         ]
       }
     ],

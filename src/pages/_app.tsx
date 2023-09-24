@@ -29,7 +29,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             staleTime: Number.POSITIVE_INFINITY,
           },
         },
-      })
+      }),
   );
 
   const scope = useMemo(
@@ -38,7 +38,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         ...(clientScope && serialize(clientScope)),
         ...pageProps.initialState,
       }),
-    [pageProps.initialState]
+    [pageProps.initialState],
   );
 
   if (typeof window !== 'undefined') {

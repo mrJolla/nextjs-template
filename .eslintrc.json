@@ -33,7 +33,7 @@
     "next/core-web-vitals"
   ],
   "rules": {
-    // react
+    // eslint-plugin-react
     "react/react-in-jsx-scope": "off",
     "react/jsx-sort-props": [
       "error",
@@ -55,65 +55,9 @@
       }
     ],
     // eslint
-    "no-restricted-imports": [
-      "error",
-      {
-        "paths": [
-          {
-            "name": "effector-react",
-            "message": "Please import from 'effector-react/scope' instead."
-          },
-          {
-            "name": "effector-react/ssr",
-            "message": "Please import from 'effector-react/scope' instead."
-          }
-        ]
-      }
-    ],
-    "padding-line-between-statements": [
-      "error",
-      {
-        "blankLine": "always",
-        "prev": "*",
-        "next": "return"
-      },
-      {
-        "blankLine": "always",
-        "prev": ["const", "let"],
-        "next": "*"
-      },
-      {
-        "blankLine": "any",
-        "prev": ["const", "let"],
-        "next": ["const", "let"]
-      }
-    ],
-    "arrow-body-style": ["error", "as-needed"],
-    "no-unused-vars": "off",
     "no-console": "error",
-    "no-multi-spaces": "error",
-    "no-multiple-empty-lines": [
-      "error",
-      {
-        "max": 1
-      }
-    ],
-    "indent": [
-      "error",
-      2,
-      {
-        "SwitchCase": 1
-      }
-    ],
-    "quotes": ["error", "single"],
-    "semi": ["error", "always"],
-    // import
-    "import/no-unresolved": "off",
-    // sort-keys-fix
-    "sort-keys-fix/sort-keys-fix": "error",
-    // unused-imports
-    "unused-imports/no-unused-imports": "error",
-    // unicorn
+    "arrow-body-style": ["error", "as-needed"],
+    // eslint-plugin-unicorn
     "unicorn/filename-case": [
       "error",
       {
@@ -122,14 +66,25 @@
     ],
     "unicorn/consistent-function-scoping": "off",
     "unicorn/prevent-abbreviations": "off",
-    "unicorn/no-document-cookie": "off",
     "unicorn/no-null": "off",
     "unicorn/explicit-length-check": "off",
     "unicorn/no-array-callback-reference": "off",
     "unicorn/no-array-reduce": "off",
     "unicorn/prefer-module": "off",
     "unicorn/prefer-node-protocol": "off",
-    // dirs
+    // eslint-plugin-import
+    "import/no-unresolved": "off",
+    // eslint-plugin-sort-keys-fix
+    "sort-keys-fix/sort-keys-fix": [
+      "error",
+      "asc",
+      {
+        "natural": true
+      }
+    ],
+    // eslint-plugin-unused-imports
+    "unused-imports/no-unused-imports": "error",
+    // eslint-plugin-dirs
     "dirs/dirnames": [
       2,
       {

@@ -41,3 +41,8 @@ yarn-error.log*
 .vscode
 
 .env
+
+/public/robots.txt
+/public/imgs/svg-sprites
+/src/shared/types/icon.ts
+

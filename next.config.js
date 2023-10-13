@@ -8,10 +8,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const config = {
   images: {
-    deviceSizes: [475, 640, 920, 1240],
-    domains: ['images.unsplash.com', 'robohash.org'],
     formats: ['image/avif', 'image/webp'],
-    imageSizes: [150, 300]
   },
   reactStrictMode: true,
   webpack: (config, { isServer }) => {

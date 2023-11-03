@@ -23,7 +23,6 @@ const config = {
           metadata: {
             path: 'src/shared/types/icon.ts',
             runtime: {
-              size: true,
               viewBox: true
             }
           }

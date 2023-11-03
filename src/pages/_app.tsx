@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 
 import { QueryClient } from '@tanstack/query-core';
-import { Hydrate, QueryClientProvider } from '@tanstack/react-query';
+import { HydrationBoundary, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { fork, Scope, serialize } from 'effector';
 import { Provider } from 'effector-react/scope';
@@ -21,12 +21,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       new QueryClient({
         defaultOptions: {
           queries: {
-            cacheTime: Number.POSITIVE_INFINITY,
+            gcTime: 5 * 60 * 1000,
             refetchOnMount: false,
             refetchOnReconnect: false,
             refetchOnWindowFocus: false,
             retry: 0,
-            staleTime: Number.POSITIVE_INFINITY,
+            staleTime: 60 * 60 * 1000,
           },
         },
       }),
@@ -63,11 +63,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider value={scope}>
       <QueryClientProvider client={queryClient}>
-        <Hydrate state={pageProps.dehydratedState}>
+        <HydrationBoundary state={pageProps.dehydratedState}>
           <ReactQueryDevtools />
 
           <Component {...pageProps} />
-        </Hydrate>
+        </HydrationBoundary>
       </QueryClientProvider>
     </Provider>
   );

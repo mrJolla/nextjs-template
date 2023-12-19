@@ -1,19 +1,22 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 
+import { EffectorNext } from '@effector/next';
 import { QueryClient } from '@tanstack/query-core';
 import { HydrationBoundary, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { fork, Scope, serialize } from 'effector';
-import { Provider } from 'effector-react/scope';
 import NProgress from 'nprogress';
 
 import '../../public/styles/app.css';
 
-let clientScope: Scope;
-
-export default function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({
+  Component,
+  pageProps,
+}: AppProps<{
+  dehydratedState: unknown;
+  initialState: Record<string, unknown>;
+}>) {
   const router = useRouter();
 
   const [queryClient] = useState(
@@ -32,19 +35,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       }),
   );
 
-  const scope = useMemo(
-    () =>
-      fork({
-        ...(clientScope && serialize(clientScope)),
-        ...pageProps.initialState,
-      }),
-    [pageProps.initialState],
-  );
-
-  if (typeof window !== 'undefined') {
-    clientScope = scope;
-  }
-
   useEffect(() => {
     const handleStart = () => NProgress.start();
     const handleStop = () => NProgress.done();
@@ -61,7 +51,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, [router.events]);
 
   return (
-    <Provider value={scope}>
+    <EffectorNext values={pageProps.initialState}>
       <QueryClientProvider client={queryClient}>
         <HydrationBoundary state={pageProps.dehydratedState}>
           <ReactQueryDevtools />
@@ -69,6 +59,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </HydrationBoundary>
       </QueryClientProvider>
-    </Provider>
+    </EffectorNext>
   );
 }

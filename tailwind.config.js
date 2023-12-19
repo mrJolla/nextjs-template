@@ -1,5 +1,3 @@
-const { fontFamily } = require('tailwindcss/defaultTheme');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
@@ -10,15 +8,11 @@ module.exports = {
     lineClamp: ['responsive', 'hover'],
   },
   plugins: [
-    function ({ addUtilities, theme, addVariant }) {
+    ({ addUtilities, theme, addVariant }) => {
       const spacing = theme('width');
 
       const sizeUtility = Object.entries(spacing).reduce(
         (acc, [key, value]) => {
-          acc[`.size-${key.replace(/[./]/g, '\\$&')}`] = {
-            width: value,
-            height: value,
-          };
           acc[`.min-size-${key.replace(/[./]/g, '\\$&')}`] = {
             'min-width': value,
             'min-height': value,
